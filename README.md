@@ -1,6 +1,6 @@
 ■ **Gitan.SortedDictionaryとは**
 
-Gitan.SortedDictionaryは、keyに基づいて並び替えを行うクラスです。
+Gitan.SortedDictionaryは、keyに基づいて並び替えた、キーと値のペアのコレクションです。
 
 プロジェクトURL : [https://github.com/gitan-dev/SortedDictionary](https://github.com/gitan-dev/SortedDictionary)
 
@@ -115,6 +115,31 @@ public class SortedDictionaryBench
         return SystemDic;
     }
 
+    static readonly System.Collections.Generic.KeyValuePair<int, int>[] _priceSizeArray = GetPriceSize();
+
+    static readonly System.Collections.Generic.SortedDictionary<int, int> SystemDic = new();
+    static readonly Gitan.SortedDictionary.SortedDictionary<int, int> gitanDic = new(false);
+
+
+    [Benchmark]
+    public System.Collections.Generic.SortedDictionary<int,int> SystemSortedDictionaryBench()
+    {
+        foreach (var priceSize in _priceSizeArray)
+        {
+            var (price, size) = priceSize;
+
+            if (size == 0)
+            {
+                SystemDic.Remove(price);
+            }
+            else
+            {
+                SystemDic[price] = size;
+            }
+        }
+        return SystemDic;
+    }
+
    [Benchmark]
     public Gitan.SortedDictionary.SortedDictionary<int,int> GitanSortedDictionaryBench()
     {
@@ -159,21 +184,25 @@ public class SortedDictionaryBench
 Benchmarkの結果、Gitan.SortedDictionary.SortedDictionaryは
 System.Collections.Generic.SortedDictionaryから30％程度速度アップしました。
 
-|                     Method |      Mean |     Error |    StdDev |
-|--------------------------- |----------:|----------:|----------:|
-|      SortedDictionaryBench | 10.601 ms | 0.1160 ms | 0.1029 ms |
-| GitanSortedDictionaryBench |  7.758 ms | 0.0722 ms | 0.0640 ms |
+|                     Method |     Mean |     Error |    StdDev |
+|--------------------------- |---------:|----------:|----------:|
+|SystemSortedDictionaryBench | 7.554 ms | 0.1474 ms | 0.1448 ms |
+| GitanSortedDictionaryBench | 4.854 ms | 0.0521 ms | 0.0487 ms |
+
 
 |                            Method |            Mean |          Error |        StdDev |
 |---------------------------------- |----------------:|---------------:|--------------:|
+|       SystemSortedDictionaryBench | 7,514,632.45 ns | 100,913.305 ns | 94,394.368 ns |
+|        GitanSortedDictionaryBench | 4,964,345.20 ns |  68,885.469 ns | 61,065.174 ns |
 |SystemSortedDictionaryBenchForeach |        25.36 ns |       0.276 ns |      0.244 ns |
 | GitanSortedDictionaryBenchForeach |        13.96 ns |       0.390 ns |      1.118 ns |
+
 
 ■ **Api定義**
 |コンストラクター|説明|
 | -------- | --- |
-|SortedDictionary(bool reverse)|SortedDictionary<TKey,TValue>を使用する。trueを送ると降順になる
-|SortedDictionary(System.Collections.Generic.IDictionary<TKey, TValue> dictionary, bool reverse)|SortedDictionary<Tkey,TValue>から要素をコピーして格納。キーの型の既定の IDictionary<TKey,TValue>を使用する。trueを送ると降順になる|
+|SortedDictionary(bool reverse)|SortedDictionary<TKey,TValue>を使用する。reverseをtrueにすると降順になる|
+|SortedDictionary(System.Collections.Generic.IDictionary<TKey, TValue> dictionary, bool reverse)|SortedDictionary<Tkey,TValue>から要素をコピーして格納。キーの型の既定の IDictionary<TKey,TValue>を使用する。reverseをtrueにすると降順になる|
 
 
 |プロパティ|説明|
