@@ -221,7 +221,6 @@ System.Collections.Generic.SortedDictionaryから30％程度速度アップし�
 |TryAdd(KeyValuePair<TKey, TValue> item)|指定したキーおよび値をSortedDictionary<TKey,TValue> に追加します。失敗時はfalseを返します|
 |AddOrChangeValue(TKey key, TValue value)|指定したキーおよび値をSortedDictionary<TKey,TValue> に追加,変更します|
 |AddOrChangeValue(KeyValuePair<TKey, TValue> item)|指定したキーおよび値をSortedDictionary<TKey,TValue> に追加,変更します|
-|AddCore|指定したキーおよび値をSortedDictionary<TKey,TValue> に追加します|
 |CopyTo(KeyValuePair<TKey, TValue>[] array)|KeyValuePair<TKey, TValue>をコピーします|
 |CopyTo(KeyValuePair<TKey, TValue>[] array, int index)|指定したインデックスを開始位置として、KeyValuePair<TKey, TValue>をコピーします|
 |CopyTo(KeyValuePair<TKey, TValue>[] array, int index, int count)|指定したインデックスを開始位置として、KeyValuePair<TKey, TValue>をコピーします|
@@ -233,7 +232,7 @@ System.Collections.Generic.SortedDictionaryから30％程度速度アップし�
 |ContainsKey(TKey key)|指定したkeyと同じ値があるかどうかを返します|
 |TryGetValue(TKey key, [MaybeNullWhen(false)] out TValue value)|指定したキーに関連付けられている値を返します|
 |GetEnumerator|foreachの結果を返します|
-|Any|rootがNullじゃなければTrueを返します|
+|Any|コレクションに要素が存在する場合、Trueを返します|
 |First|最初のキーのKeyValuePair<TKey, TValue>を返します|
 |Last|最後のキーのKeyValuePair<TKey, TValue>を返します|
 |GetFirstKey|最初のキーの値を返します|
