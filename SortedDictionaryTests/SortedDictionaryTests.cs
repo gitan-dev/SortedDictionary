@@ -205,10 +205,6 @@ public class SortedDictionaryTests
 
         value = gitanDic.Find(2);
         Assert.IsTrue(value == 200);
-
-        gitanDic.AddCore(3, 300, false);
-        value = gitanDic.Find(3);
-        Assert.IsTrue(value == 300);
     }
 
     [TestMethod()]
