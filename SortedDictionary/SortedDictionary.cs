@@ -146,7 +146,7 @@ where TKey : struct, IComparable<TKey>
         AddCore(item.Key, item.Value, true);
     }
 
-    public bool AddCore(TKey key, TValue value, bool changeMode)
+    private bool AddCore(TKey key, TValue value, bool changeMode)
     {
         if (root == null)
         {
