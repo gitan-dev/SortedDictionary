@@ -376,15 +376,20 @@ public class SortedDictionaryBench2
 }
 
 
-//|                     Method |     Mean |     Error |    StdDev |
-//|--------------------------- |---------:|----------:|----------:|
-//|SystemSortedDictionaryBench | 7.554 ms | 0.1474 ms | 0.1448 ms |
-//| GitanSortedDictionaryBench | 4.854 ms | 0.0521 ms | 0.0487 ms |
-
-
-//|                            Method |            Mean |          Error |        StdDev |
-//|---------------------------------- |----------------:|---------------:|--------------:|
-//|       SystemSortedDictionaryBench | 7,514,632.45 ns | 100,913.305 ns | 94,394.368 ns |
-//|        GitanSortedDictionaryBench | 4,964,345.20 ns |  68,885.469 ns | 61,065.174 ns |
-//|SystemSortedDictionaryBenchForeach |        25.36 ns |       0.276 ns |      0.244 ns |
-//| GitanSortedDictionaryBenchForeach |        13.96 ns |       0.390 ns |      1.118 ns |
+//| Method                             | Runtime  | Mean            | Error          | StdDev         | Ratio | RatioSD |
+//|----------------------------------- |--------- |----------------:|---------------:|---------------:|------:|--------:|
+//| SystemSortedDictionaryBench        | .NET 6.0 | 8,219,068.69 ns | 163,819.545 ns | 224,238.042 ns |  1.00 |    0.00 |
+//| SystemSortedDictionaryBench        | .NET 7.0 | 7,754,178.17 ns | 143,259.915 ns | 140,700.392 ns |  0.94 |    0.03 |
+//| SystemSortedDictionaryBench        | .NET 8.0 | 5,324,158.66 ns | 103,940.154 ns | 135,151.560 ns |  0.65 |    0.03 |
+//|                                    |          |                 |                |                |       |         |
+//| GitanSortedDictionaryBench         | .NET 6.0 | 5,632,193.33 ns | 102,363.615 ns | 143,499.492 ns |  1.00 |    0.00 |
+//| GitanSortedDictionaryBench         | .NET 7.0 | 5,154,645.41 ns | 102,636.392 ns | 133,456.301 ns |  0.91 |    0.03 |
+//| GitanSortedDictionaryBench         | .NET 8.0 | 4,876,591.21 ns |  95,350.851 ns | 136,749.342 ns |  0.87 |    0.04 |
+//|                                    |          |                 |                |                |       |         |
+//| SystemSortedDictionaryBenchForeach | .NET 6.0 |        29.05 ns |       0.598 ns |       0.777 ns |  1.00 |    0.00 |
+//| SystemSortedDictionaryBenchForeach | .NET 7.0 |        26.77 ns |       0.458 ns |       0.527 ns |  0.92 |    0.03 |
+//| SystemSortedDictionaryBenchForeach | .NET 8.0 |        23.93 ns |       0.493 ns |       0.658 ns |  0.83 |    0.03 |
+//|                                    |          |                 |                |                |       |         |
+//| GitanSortedDictionaryBenchForeach  | .NET 6.0 |        13.62 ns |       0.298 ns |       0.859 ns |  1.00 |    0.00 |
+//| GitanSortedDictionaryBenchForeach  | .NET 7.0 |        12.91 ns |       0.445 ns |       1.232 ns |  0.95 |    0.12 |
+//| GitanSortedDictionaryBenchForeach  | .NET 8.0 |        10.68 ns |       0.417 ns |       1.149 ns |  0.78 |    0.10 |
