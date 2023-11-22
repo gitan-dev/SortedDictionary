@@ -97,6 +97,15 @@ where TKey : struct, IComparable<TKey>
 
     public int TotalCount() { return Count; }
 
+    private static void ThrowInvalidOperationException(string message)
+    {
+        throw new InvalidOperationException(message);
+    }
+    private static void ThrowKeyNotFoundException(string message)
+    {
+        throw new KeyNotFoundException(message);
+    }
+
     public TValue this[TKey key]
     {
         get
@@ -113,16 +122,15 @@ where TKey : struct, IComparable<TKey>
     {
         if (AddCore(key, value, false) == false)
         {
-            throw new ArgumentException($"An item with the same key has already been added. Key:{key} ");
+            ThrowInvalidOperationException($"An item with the same key has already been added. Key:{key}");
         }
     }
 
     public void Add(KeyValuePair<TKey, TValue> item)
     {
-        var result = AddCore(item.Key, item.Value, false);
-        if(result == false)
+        if (AddCore(item.Key, item.Value, false) == false)
         {
-            throw new InvalidOperationException($"An item with the same key has already been added. Key:{item.Key} ");
+            ThrowInvalidOperationException($"An item with the same key has already been added. Key:{item.Key}");
         }
     }
 
@@ -613,7 +621,12 @@ where TKey : struct, IComparable<TKey>
     public TValue Find(TKey key)
     {
         Node? node = FindNode(key);
-        return node == null ? throw new KeyNotFoundException("Could not find Key") : node.Value;
+        if (node == null)
+        {
+            ThrowKeyNotFoundException("Could not find Key");
+            return default!;
+        }
+        return node.Value;
     }
 
     internal static int Log2(int value) => BitOperations.Log2((uint)value);

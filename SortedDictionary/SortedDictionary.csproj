@@ -1,8 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+	<TargetFrameworks>net8.0;net7.0;net6.0</TargetFrameworks>
     <Nullable>enable</Nullable>
+    <PackageId>Gitan.SortedDictionary</PackageId>
+    <Title>Gitan.SortedDictionary</Title>
+    <Version>0.9.2</Version>
+    <Authors>Soffice Co., Ltd.</Authors>
+    <Company>Soffice Co., Ltd.</Company>
+    <Product>Gitan.SortedDictionary</Product>
+    <Description>A faster version of System.Collections.Generic.SortedDictionary&lt;TKey,TValue&gt;</Description>
+    <PackageProjectUrl>https://github.com/gitan-dev/SortedDictionary</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>
